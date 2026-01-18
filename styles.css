@@ -99,13 +99,13 @@ nav .container {
     padding: 10px;
 }
 
-/* Header */
+/* Header - Compact Version */
 header {
     background: linear-gradient(135deg, #b91c1c 0%, #dc2626 20%, #1e3a8a 60%, #2563eb 100%);
     color: white;
-    padding: 60px 0;
+    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     position: relative;
     overflow: hidden;
 }
@@ -148,29 +148,17 @@ header .container {
 }
 
 header h1 {
-    font-size: 3rem;
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     letter-spacing: -0.5px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    animation: fadeInDown 0.8s ease-out;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .subtitle {
-    font-size: 1.5rem;
+    font-size: 1rem;
     opacity: 0.95;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .course-info {
@@ -443,22 +431,22 @@ main {
 
 .hero-image {
     width: 100%;
-    height: 300px;
+    height: 180px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 12px;
-    margin-bottom: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     font-weight: 600;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* Add semi-transparent overlay for better text readability */
@@ -1291,49 +1279,88 @@ body:has(script[src*="script.js"]) .hero-image {
    SLIDE NAVIGATION SYSTEM
    ============================================ */
 
-/* Slide Container */
+/* Slide Container with Sidebar Navigation */
 .slide-container {
-    position: relative;
-    height: calc(100vh - 60px);
-    overflow: hidden;
+    display: flex;
+    gap: 0;
     max-width: 100%;
     padding: 0;
+    min-height: calc(100vh - 120px);
 }
 
-/* Individual Slides */
+/* Sidebar Navigation */
+.slide-sidebar {
+    width: 250px;
+    background: #f8fafc;
+    border-right: 2px solid #e2e8f0;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.slide-sidebar-nav {
+    padding: 15px 0;
+}
+
+.slide-sidebar-nav h3 {
+    padding: 0 15px 8px;
+    margin: 0 0 5px 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.slide-nav-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    font-size: 0.9rem;
+    color: #475569;
+    display: block;
+    text-decoration: none;
+}
+
+.slide-nav-item:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.slide-nav-item.active {
+    background: #dbeafe;
+    border-left-color: #3b82f6;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+/* Main Content Area */
+.slide-main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 40px 60px;
+}
+
+/* Individual Slides - Now just sections */
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: none;
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .slide.active {
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
+    display: block;
 }
 
 /* Slide Content Wrapper */
 .slide-content {
     width: 100%;
-    max-width: 1200px;
-    height: 100%;
-    max-height: calc(100vh - 140px);
-    overflow-y: auto;
-    padding: 20px 40px;
+    padding: 0;
     background: white;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-    position: relative;
 }
 
 /* Custom scrollbar for slide content */
@@ -1355,73 +1382,14 @@ body:has(script[src*="script.js"]) .hero-image {
     background: #555;
 }
 
-/* Navigation Buttons */
+/* Old Arrow Navigation - Hidden (using sidebar now) */
 .slide-nav {
-    position: fixed;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    pointer-events: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
+    display: none;
 }
 
-.slide-nav-btn {
-    pointer-events: all;
-    width: 60px;
-    height: 60px;
-    background: rgba(30, 58, 138, 0.9);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.slide-nav-btn:hover {
-    background: rgba(37, 99, 235, 0.95);
-    transform: scale(1.1);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-}
-
-.slide-nav-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-.slide-nav-btn:active {
-    transform: scale(0.95);
-}
-
-.arrow-icon {
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-/* Progress Bar */
+/* Old Progress Bar - Hidden (using sidebar now) */
 .slide-progress {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    z-index: 99;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.slide-progress-bar {
-    height: 4px;
-    background: linear-gradient(90deg, #dc2626, #2563eb, #d97706, #059669);
-    width: 0%;
-    transition: width 0.3s ease;
+    display: none;
 }
 
 .slide-progress-text {

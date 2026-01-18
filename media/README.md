@@ -6,10 +6,7 @@ This directory contains all media assets for the Social Studies website, includi
 
 ```
 /media/
-  ├── images/
-  │   ├── units/          # Hero images for unit pages
-  │   ├── cards/          # Background images for landing page cards (optional)
-  │   └── capstone/       # Example projects and visuals
+  ├── images/             # All images (hero images, backgrounds, etc.)
   ├── videos/
   │   ├── unit1/          # Unit 1 video resources
   │   ├── unit2/          # Unit 2 video resources
@@ -28,11 +25,11 @@ This directory contains all media assets for the Social Studies website, includi
 **Format:** `unit{N}-{description}-{type}.{ext}`
 
 **Examples:**
-- `unit1-colonies-hero.jpg` - Hero image for Unit 1 page
-- `unit1-colonies-card.jpg` - Background image for Unit 1 card on landing page
-- `unit2-trade-map.jpg` - Content image showing triangle trade routes
-- `unit3-revolution-soldiers.jpg` - Revolutionary War image
-- `unit4-constitution-signing.jpg` - Constitution signing image
+- `unit1-hero.jpg` - Hero image for Unit 1 page
+- `unit2-hero.jpg` - Hero image for Unit 2 page
+- `unit3-hero.jpg` - Hero image for Unit 3 page
+- `unit4-hero.jpg` - Hero image for Unit 4 page
+- `unit1-card.jpg` - Background image for Unit 1 card on landing page (optional)
 - `capstone-example-01.jpg` - Numbered example projects
 
 **Recommended Image Specifications:**
@@ -80,22 +77,22 @@ This directory contains all media assets for the Social Studies website, includi
 ## Current Media Files
 
 ### Unit 1: The 13 Colonies
-- **Hero Image:** `images/units/unit1-colonies-hero.jpg`
+- **Hero Image:** `media/images/unit1-hero.jpg`
   - Source: Library of Congress - 1774 Map of the Thirteen Colonies
   - URL: https://www.loc.gov/resource/g3300.ct000370/
 
 ### Unit 2: The Triangle Trade
-- **Hero Image:** `images/units/unit2-trade-hero.jpg`
+- **Hero Image:** `media/images/unit2-hero.jpg`
   - Source: Library of Congress - Map of Triangle Trade Routes
   - URL: https://www.loc.gov/resource/g3200.ct003962/
 
 ### Unit 3: Revolutionary Voices
-- **Hero Image:** `images/units/unit3-revolution-hero.jpg`
+- **Hero Image:** `media/images/unit3-hero.jpg`
   - Source: National Park Service - Revolutionary War Soldiers
   - URL: https://www.nps.gov/common/uploads/photogallery/ner/park-york/8C9ABAAD-155D-451F-6737E377FDB608B3/8C9ABAAD-155D-451F-6737E377FDB608B3-large.jpg
 
 ### Unit 4: The Constitution
-- **Hero Image:** `images/units/unit4-constitution-hero.jpg`
+- **Hero Image:** `media/images/unit4-hero.jpg`
   - Source: Architect of the Capitol - Signing of the Constitution
   - URL: https://www.aoc.gov/sites/default/files/styles/hero_media_image_desktop_1x/public/2020-05/Signing_of_the_Constitution_1987_Howard_Chandler_Christy.jpg
 
@@ -124,11 +121,11 @@ Before uploading images:
 4. Place in appropriate subdirectory
 5. Reference in HTML with correct path:
    ```html
-   <img src="media/images/units/unit1-colonies-hero.jpg" alt="Map of 13 Colonies">
+   <img src="media/images/unit1-hero.jpg" alt="Map of 13 Colonies">
    ```
    or as background:
    ```html
-   <div style="background-image: url('media/images/units/unit1-colonies-hero.jpg');"></div>
+   <div style="background-image: url('media/images/unit1-hero.jpg');"></div>
    ```
 
 ### To add a new video:

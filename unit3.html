@@ -29,11 +29,28 @@
         </div>
     </header>
 
-    <main class="container slide-container">
-        <!-- SLIDE 1: Hero + Essential Question -->
-        <div class="slide active" data-slide="1">
+    <main class="slide-container">
+        <!-- SIDEBAR NAVIGATION -->
+        <aside class="slide-sidebar">
+            <nav class="slide-sidebar-nav">
+                <h3>Sections</h3>
+                <a href="#" class="slide-nav-item active" data-slide="1">Essential Question</a>
+                <a href="#" class="slide-nav-item" data-slide="2">Key Concepts</a>
+                <a href="#" class="slide-nav-item" data-slide="3">Vocabulary</a>
+                <a href="#" class="slide-nav-item" data-slide="4">Events & Organizations</a>
+                <a href="#" class="slide-nav-item" data-slide="5">Women in Revolution</a>
+                <a href="#" class="slide-nav-item" data-slide="6">African Americans</a>
+                <a href="#" class="slide-nav-item" data-slide="7">Indigenous Perspectives</a>
+                <a href="#" class="slide-nav-item" data-slide="8">Resources & Review</a>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <div class="slide-main-content">
+            <!-- SLIDE 1: Hero + Essential Question -->
+            <div class="slide active" data-slide="1">
             <div class="slide-content">
-                <div class="hero-image" style="background-image: url('media/images/units/unit3-hero.jpg');">
+                <div class="hero-image" style="background-image: url('media/images/unit3-hero.jpg');">
                     <div class="hero-image-text">[Image: Revolutionary War soldiers representing diverse perspectives]</div>
                 </div>
                 <h2>Essential Question</h2>
@@ -307,24 +324,6 @@
             </div>
         </div>
     </main>
-
-    <!-- Navigation Controls -->
-    <div class="slide-nav">
-        <button class="slide-nav-btn slide-prev" aria-label="Previous slide">
-            <span class="arrow-icon">←</span>
-        </button>
-        <button class="slide-nav-btn slide-next" aria-label="Next slide">
-            <span class="arrow-icon">→</span>
-        </button>
-    </div>
-
-    <!-- Progress Indicator -->
-    <div class="slide-progress">
-        <div class="slide-progress-bar"></div>
-        <div class="slide-progress-text">
-            <span class="current-slide">1</span> / <span class="total-slides">8</span>
-        </div>
-    </div>
 
     <footer>
         <div class="container">

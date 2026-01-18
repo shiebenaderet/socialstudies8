@@ -2,9 +2,9 @@
 
 ## Images to Download
 
-Download these images and save them to the `/media/images/units/` folder with the exact filenames shown below.
+Download these images and save them to the `/media/images/` folder with the exact filenames shown below.
 
-**Note:** The project now uses an organized media directory structure. For complete details on media organization and naming conventions, see `media/README.md`.
+**Note:** For complete details on media organization and naming conventions, see `media/README.md`.
 
 ---
 
@@ -16,8 +16,8 @@ https://tile.loc.gov/image-services/iiif/service:gmd:gmd370m:g3701m:g3701sm:gct0
 ```
 
 **Save As:**
-- `media/images/units/unit1-colonies-hero.jpg` (for hero image on unit1.html)
-- Optionally also save as: `media/images/cards/unit1-colonies-card.jpg` (for landing page card background)
+- `media/images/unit1-hero.jpg` (for hero image on unit1.html)
+- Optionally also save as: `media/images/unit1-card.jpg` (for landing page card background)
 
 **Attribution:** Library of Congress - 13 Colonies Map 1774
 
@@ -31,8 +31,8 @@ https://tile.loc.gov/storage-services/service/pnp/ppmsca/76600/76673r.jpg
 ```
 
 **Save As:**
-- `media/images/units/unit2-trade-hero.jpg` (for hero image on unit2.html)
-- Optionally also save as: `media/images/cards/unit2-trade-card.jpg` (for landing page card background)
+- `media/images/unit2-hero.jpg` (for hero image on unit2.html)
+- Optionally also save as: `media/images/unit2-card.jpg` (for landing page card background)
 
 **Attribution:** Library of Congress - Triangle Trade Map
 

@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// SLIDE NAVIGATION SYSTEM
+// SLIDE NAVIGATION SYSTEM - Sidebar Based
 // ============================================
 
 class SlideNavigator {
@@ -274,6 +274,7 @@ class SlideNavigator {
         this.currentSlide = 1;
         this.totalSlides = 0;
         this.slides = [];
+        this.navItems = [];
         this.init();
     }
 
@@ -282,34 +283,27 @@ class SlideNavigator {
         if (!slideContainer) return;
 
         this.slides = Array.from(document.querySelectorAll('.slide'));
+        this.navItems = Array.from(document.querySelectorAll('.slide-nav-item'));
         this.totalSlides = this.slides.length;
 
         if (this.totalSlides === 0) return;
 
-        this.prevBtn = document.querySelector('.slide-prev');
-        this.nextBtn = document.querySelector('.slide-next');
-        this.progressBar = document.querySelector('.slide-progress-bar');
-
         this.showSlide(1);
         this.setupEventListeners();
-        this.updateProgress();
-
-        // Prevent scroll on body when in slide mode
-        document.body.style.overflow = 'hidden';
     }
 
     setupEventListeners() {
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => this.previousSlide());
-        }
+        // Sidebar navigation clicks
+        this.navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const slideNum = parseInt(item.getAttribute('data-slide'));
+                this.showSlide(slideNum);
+            });
+        });
 
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => this.nextSlide());
-        }
-
+        // Keyboard navigation (Arrow keys)
         document.addEventListener('keydown', (e) => this.handleKeyboard(e));
-
-        this.setupTouchGestures();
     }
 
     showSlide(n) {
@@ -318,17 +312,21 @@ class SlideNavigator {
 
         this.currentSlide = n;
 
+        // Update slide visibility
         this.slides.forEach((slide, index) => {
             slide.classList.toggle('active', index + 1 === n);
         });
 
-        this.updateNavigationButtons();
-        this.updateProgress();
+        // Update sidebar nav active state
+        this.navItems.forEach((item, index) => {
+            item.classList.toggle('active', index + 1 === n);
+        });
 
-        const activeSlide = this.slides[n - 1];
-        const slideContent = activeSlide.querySelector('.slide-content');
-        if (slideContent) slideContent.scrollTop = 0;
+        // Scroll to top of content
+        const mainContent = document.querySelector('.slide-main-content');
+        if (mainContent) mainContent.scrollTop = 0;
 
+        // Update URL hash for bookmarking
         window.location.hash = `slide-${n}`;
     }
 
@@ -344,23 +342,6 @@ class SlideNavigator {
         }
     }
 
-    updateNavigationButtons() {
-        if (this.prevBtn) this.prevBtn.disabled = this.currentSlide === 1;
-        if (this.nextBtn) this.nextBtn.disabled = this.currentSlide === this.totalSlides;
-    }
-
-    updateProgress() {
-        if (this.progressBar) {
-            const percent = (this.currentSlide / this.totalSlides) * 100;
-            this.progressBar.style.width = percent + '%';
-        }
-
-        const current = document.querySelector('.current-slide');
-        const total = document.querySelector('.total-slides');
-        if (current) current.textContent = this.currentSlide;
-        if (total) total.textContent = this.totalSlides;
-    }
-
     handleKeyboard(e) {
         // Only handle keyboard if we're on a slide page
         if (!document.querySelector('.slide-container')) return;
@@ -373,7 +354,6 @@ class SlideNavigator {
                 break;
             case 'ArrowRight':
             case 'ArrowDown':
-            case ' ':
                 e.preventDefault();
                 this.nextSlide();
                 break;
@@ -386,28 +366,6 @@ class SlideNavigator {
                 this.showSlide(this.totalSlides);
                 break;
         }
-    }
-
-    setupTouchGestures() {
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const slideContainer = document.querySelector('.slide-container');
-        if (!slideContainer) return;
-
-        slideContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        slideContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            const swipeThreshold = 50;
-
-            if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
-                if (touchEndX < touchStartX) this.nextSlide();
-                if (touchEndX > touchStartX) this.previousSlide();
-            }
-        });
     }
 }
 
