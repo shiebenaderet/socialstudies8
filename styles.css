@@ -1322,11 +1322,10 @@ body:has(script[src*="script.js"]) .hero-image {
     background: #cbd5e1;
     color: #475569;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 0.7rem;
     font-weight: 700;
+    line-height: 20px;
+    text-align: center;
     transition: all 0.2s ease;
 }
 
@@ -1360,15 +1359,16 @@ body:has(script[src*="script.js"]) .hero-image {
 .slide-main-content {
     flex: 1;
     overflow-y: auto;
-    padding: 10px 25px 30px;
+    padding: 15px 40px 30px;
+    background: #ffffff;
 }
 
 /* Individual Slides - Now just sections */
 .slide {
     display: none;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .slide.active {
