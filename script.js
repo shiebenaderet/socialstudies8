@@ -264,3 +264,164 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
 });
+
+// ============================================
+// SLIDE NAVIGATION SYSTEM
+// ============================================
+
+class SlideNavigator {
+    constructor() {
+        this.currentSlide = 1;
+        this.totalSlides = 0;
+        this.slides = [];
+        this.init();
+    }
+
+    init() {
+        const slideContainer = document.querySelector('.slide-container');
+        if (!slideContainer) return;
+
+        this.slides = Array.from(document.querySelectorAll('.slide'));
+        this.totalSlides = this.slides.length;
+
+        if (this.totalSlides === 0) return;
+
+        this.prevBtn = document.querySelector('.slide-prev');
+        this.nextBtn = document.querySelector('.slide-next');
+        this.progressBar = document.querySelector('.slide-progress-bar');
+
+        this.showSlide(1);
+        this.setupEventListeners();
+        this.updateProgress();
+
+        // Prevent scroll on body when in slide mode
+        document.body.style.overflow = 'hidden';
+    }
+
+    setupEventListeners() {
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.previousSlide());
+        }
+
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+
+        document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+
+        this.setupTouchGestures();
+    }
+
+    showSlide(n) {
+        if (n < 1) n = 1;
+        if (n > this.totalSlides) n = this.totalSlides;
+
+        this.currentSlide = n;
+
+        this.slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index + 1 === n);
+        });
+
+        this.updateNavigationButtons();
+        this.updateProgress();
+
+        const activeSlide = this.slides[n - 1];
+        const slideContent = activeSlide.querySelector('.slide-content');
+        if (slideContent) slideContent.scrollTop = 0;
+
+        window.location.hash = `slide-${n}`;
+    }
+
+    nextSlide() {
+        if (this.currentSlide < this.totalSlides) {
+            this.showSlide(this.currentSlide + 1);
+        }
+    }
+
+    previousSlide() {
+        if (this.currentSlide > 1) {
+            this.showSlide(this.currentSlide - 1);
+        }
+    }
+
+    updateNavigationButtons() {
+        if (this.prevBtn) this.prevBtn.disabled = this.currentSlide === 1;
+        if (this.nextBtn) this.nextBtn.disabled = this.currentSlide === this.totalSlides;
+    }
+
+    updateProgress() {
+        if (this.progressBar) {
+            const percent = (this.currentSlide / this.totalSlides) * 100;
+            this.progressBar.style.width = percent + '%';
+        }
+
+        const current = document.querySelector('.current-slide');
+        const total = document.querySelector('.total-slides');
+        if (current) current.textContent = this.currentSlide;
+        if (total) total.textContent = this.totalSlides;
+    }
+
+    handleKeyboard(e) {
+        // Only handle keyboard if we're on a slide page
+        if (!document.querySelector('.slide-container')) return;
+
+        switch(e.key) {
+            case 'ArrowLeft':
+            case 'ArrowUp':
+                e.preventDefault();
+                this.previousSlide();
+                break;
+            case 'ArrowRight':
+            case 'ArrowDown':
+            case ' ':
+                e.preventDefault();
+                this.nextSlide();
+                break;
+            case 'Home':
+                e.preventDefault();
+                this.showSlide(1);
+                break;
+            case 'End':
+                e.preventDefault();
+                this.showSlide(this.totalSlides);
+                break;
+        }
+    }
+
+    setupTouchGestures() {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const slideContainer = document.querySelector('.slide-container');
+        if (!slideContainer) return;
+
+        slideContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        slideContainer.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeThreshold = 50;
+
+            if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
+                if (touchEndX < touchStartX) this.nextSlide();
+                if (touchEndX > touchStartX) this.previousSlide();
+            }
+        });
+    }
+}
+
+// Initialize slide navigator when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    if (document.querySelector('.slide-container')) {
+        window.slideNavigator = new SlideNavigator();
+
+        // Check for hash in URL (e.g., #slide-3)
+        if (window.location.hash) {
+            const match = window.location.hash.match(/slide-(\d+)/);
+            if (match && match[1]) {
+                window.slideNavigator.showSlide(parseInt(match[1]));
+            }
+        }
+    }
+});

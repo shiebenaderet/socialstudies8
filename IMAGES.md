@@ -2,7 +2,9 @@
 
 ## Images to Download
 
-Download these images and save them to the `/images/` folder with the exact filenames shown below.
+Download these images and save them to the `/media/images/units/` folder with the exact filenames shown below.
+
+**Note:** The project now uses an organized media directory structure. For complete details on media organization and naming conventions, see `media/README.md`.
 
 ---
 
@@ -14,8 +16,8 @@ https://tile.loc.gov/image-services/iiif/service:gmd:gmd370m:g3701m:g3701sm:gct0
 ```
 
 **Save As:**
-- `images/unit1-hero.jpg` (for hero image on unit1.html)
-- Optionally also save as: `images/unit1-card.jpg` (for landing page card background)
+- `media/images/units/unit1-colonies-hero.jpg` (for hero image on unit1.html)
+- Optionally also save as: `media/images/cards/unit1-colonies-card.jpg` (for landing page card background)
 
 **Attribution:** Library of Congress - 13 Colonies Map 1774
 
@@ -29,8 +31,8 @@ https://tile.loc.gov/storage-services/service/pnp/ppmsca/76600/76673r.jpg
 ```
 
 **Save As:**
-- `images/unit2-hero.jpg` (for hero image on unit2.html)
-- Optionally also save as: `images/unit2-card.jpg` (for landing page card background)
+- `media/images/units/unit2-trade-hero.jpg` (for hero image on unit2.html)
+- Optionally also save as: `media/images/cards/unit2-trade-card.jpg` (for landing page card background)
 
 **Attribution:** Library of Congress - Triangle Trade Map
 
@@ -44,8 +46,8 @@ https://www.nps.gov/waro/learn/historyculture/images/brown-university-soldiers_1
 ```
 
 **Save As:**
-- `images/unit3-hero.jpg` (for hero image on unit3.html)
-- Optionally also save as: `images/unit3-card.jpg` (for landing page card background)
+- `media/images/units/unit3-revolution-hero.jpg` (for hero image on unit3.html)
+- Optionally also save as: `media/images/cards/unit3-revolution-card.jpg` (for landing page card background)
 
 **Attribution:** National Park Service - Revolutionary War Soldiers
 
@@ -59,8 +61,8 @@ https://www.aoc.gov/sites/default/files/2026-01/20220610_202406_SG_COMP_CROP-200
 ```
 
 **Save As:**
-- `images/unit4-hero.jpg` (for hero image on unit4.html)
-- Optionally also save as: `images/unit4-card.jpg` (for landing page card background)
+- `media/images/units/unit4-constitution-hero.jpg` (for hero image on unit4.html)
+- Optionally also save as: `media/images/cards/unit4-constitution-card.jpg` (for landing page card background)
 
 **Attribution:** Architect of the Capitol - Scene at the Signing of the Constitution by Howard Chandler Christy
 
