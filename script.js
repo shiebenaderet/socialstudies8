@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth Scroll for Anchor Links
     setupSmoothScroll();
+
+    // Mobile Navigation Toggle
+    setupMobileNav();
 });
 
 // Create and manage back to top button
@@ -199,6 +202,38 @@ function makeExpandable(selector) {
             heading.querySelector('.expand-icon').style.transition = 'transform 0.3s ease';
         }
     });
+}
+
+// Mobile Navigation Toggle
+function setupMobileNav() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const isExpanded = navLinks.classList.contains('active');
+            navToggle.setAttribute('aria-expanded', isExpanded);
+        });
+
+        // Close menu when a link is clicked
+        const links = navLinks.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Set active link based on current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        links.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+    }
 }
 
 // Add keyboard navigation hints for accessibility
