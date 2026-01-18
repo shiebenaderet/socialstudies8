@@ -5,62 +5,43 @@
 
 ## 🎨 **PHASE 1: Visual Assets & Imagery** (Priority: HIGH)
 
-### Landing Page (index.html)
-- [ ] **Header Background Image**
-  - Source: American flag transitioning from 13-star colonial to modern
-  - Or: Timeline collage showing colonial → revolutionary → constitutional periods
-  - Dimensions: 1920px x 400px minimum
-  - Format: JPG optimized for web
-  - Location: Create `/images/` folder, name `header-bg.jpg`
+### ✅ INFRASTRUCTURE COMPLETE!
+- [x] Created `/images/` folder
+- [x] Created `IMAGES.md` with direct download URLs
+- [x] Updated CSS to support background images
+- [x] Added hero image slots to all unit pages
+- [x] Set up graceful fallbacks if images not present
 
-### Unit 1: The 13 Colonies
-- [ ] **Hero Image (unit1.html)**
-  - Map of 13 colonies color-coded by region (New England, Middle, Southern)
-  - Dimensions: 1400px x 300px
-  - File: `images/unit1-hero.jpg`
+### 📥 **DOWNLOAD IMAGES** - See IMAGES.md for URLs and Instructions
 
-- [ ] **Landing Page Card Background (optional)**
-  - Colonial settlement illustration or subtle map texture
-  - Dimensions: 800px x 600px
-  - File: `images/unit1-card.jpg`
+#### Unit 1: The 13 Colonies
+- [ ] **Download & Save**
+  - URL: https://tile.loc.gov/image-services/iiif/service:gmd:gmd370m:g3701m:g3701sm:gct00482:cs000015/full/pct:12.5/0/default.jpg
+  - Save as: `images/unit1-hero.jpg`
+  - Source: Library of Congress - 13 Colonies Map (1774)
 
-### Unit 2: The Triangle Trade
-- [ ] **Hero Image (unit2.html)**
-  - Triangle Trade route map showing Africa-Americas-Europe
-  - Dimensions: 1400px x 300px
-  - File: `images/unit2-hero.jpg`
+#### Unit 2: The Triangle Trade
+- [ ] **Download & Save**
+  - URL: https://tile.loc.gov/storage-services/service/pnp/ppmsca/76600/76673r.jpg
+  - Save as: `images/unit2-hero.jpg`
+  - Source: Library of Congress - Triangle Trade Map
 
-- [ ] **Landing Page Card Background (optional)**
-  - Historical ship or Atlantic map with trade routes
-  - Dimensions: 800px x 600px
-  - File: `images/unit2-card.jpg`
+#### Unit 3: Revolutionary Voices
+- [ ] **Download & Save**
+  - URL: https://www.nps.gov/waro/learn/historyculture/images/brown-university-soldiers_1.jpg
+  - Save as: `images/unit3-hero.jpg`
+  - Source: National Park Service - Revolutionary War Soldiers
 
-### Unit 3: Revolutionary Voices
-- [ ] **Hero Image (unit3.html)**
-  - Diverse perspectives collage OR Liberty Bell with silhouettes
-  - Dimensions: 1400px x 300px
-  - File: `images/unit3-hero.jpg`
+#### Unit 4: The Constitution
+- [ ] **Download & Save**
+  - URL: https://www.aoc.gov/sites/default/files/2026-01/20220610_202406_SG_COMP_CROP-2000w-Howard-Chandler%20Christy-Signing-Constitution.jpg
+  - Save as: `images/unit4-hero.jpg`
+  - Source: Architect of the Capitol - Signing of Constitution
 
-- [ ] **Landing Page Card Background (optional)**
-  - Quill and parchment or Revolutionary War scene
-  - Dimensions: 800px x 600px
-  - File: `images/unit3-card.jpg`
-
-### Unit 4: The Constitution
-- [ ] **Hero Image (unit4.html)**
-  - "We the People" artistic rendering OR Constitutional Convention
-  - Dimensions: 1400px x 300px
-  - File: `images/unit4-hero.jpg`
-
-- [ ] **Landing Page Card Background (optional)**
-  - Quill writing on Constitution OR three branches diagram
-  - Dimensions: 800px x 600px
-  - File: `images/unit4-card.jpg`
-
-### Image Optimization
-- [ ] Compress all images using TinyPNG or similar (target <300KB per image)
-- [ ] Create WebP versions for better performance
-- [ ] Add alt text descriptions for accessibility
+### After Downloading Images:
+- [ ] Compress images using TinyPNG (target <300KB each)
+- [ ] Commit and push images to repository
+- [ ] Test that images appear on all unit pages
 
 ---
 
