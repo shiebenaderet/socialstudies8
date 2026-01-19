@@ -277,14 +277,23 @@ function initTabNavigation() {
     if (slides.length === 0) return;
 
     function showTab(tabName) {
-        // Update active states
+        // Update active states for all tab buttons
         tabButtons.forEach(btn => btn.classList.remove('active'));
 
-        const activeButton = document.querySelector(
+        // Mark active in dropdown menu
+        const dropdownActiveButton = document.querySelector(
             `.dropdown-menu a[href$="#tab-${tabName}"]`
         );
-        if (activeButton) {
-            activeButton.classList.add('active');
+        if (dropdownActiveButton) {
+            dropdownActiveButton.classList.add('active');
+        }
+
+        // Mark active in header tabs
+        const headerActiveButton = document.querySelector(
+            `.header-tab[href$="#tab-${tabName}"]`
+        );
+        if (headerActiveButton) {
+            headerActiveButton.classList.add('active');
         }
 
         // Show slides matching this tab
