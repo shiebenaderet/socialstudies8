@@ -270,59 +270,138 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 function initTabNavigation() {
-    const tabButtons = document.querySelectorAll('.slide-nav-item');
+    // Select both old sidebar nav items (if any exist) and new dropdown menu links
+    const tabButtons = document.querySelectorAll('.slide-nav-item, .dropdown-menu a');
     const slides = document.querySelectorAll('.slide');
 
-    if (tabButtons.length === 0 || slides.length === 0) return;
+    if (slides.length === 0) return;
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
+    function showTab(tabName) {
+        // Update active states
+        tabButtons.forEach(btn => btn.classList.remove('active'));
 
-            // Get target tab from data-slide attribute
-            const targetTab = button.getAttribute('data-slide');
-
-            // Update active tab button
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // Show all slides that belong to this tab
-            slides.forEach(slide => {
-                const slideTab = slide.getAttribute('data-tab');
-                if (slideTab === targetTab) {
-                    slide.classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                }
-            });
-
-            // Scroll to top of content area
-            const mainContent = document.querySelector('.slide-main-content');
-            if (mainContent) {
-                mainContent.scrollTop = 0;
-            }
-
-            // Update URL hash for bookmarking
-            window.location.hash = `tab-${targetTab}`;
-        });
-    });
-
-    // Check for hash in URL and show corresponding tab
-    if (window.location.hash) {
-        const match = window.location.hash.match(/tab-(\w+)/);
-        if (match && match[1]) {
-            const targetButton = document.querySelector(`.slide-nav-item[data-slide="${match[1]}"]`);
-            if (targetButton) {
-                targetButton.click();
-            }
+        const activeButton = document.querySelector(
+            `.dropdown-menu a[href$="#tab-${tabName}"]`
+        );
+        if (activeButton) {
+            activeButton.classList.add('active');
         }
-    } else {
-        // Default: show first tab (overview)
-        const firstButton = tabButtons[0];
-        if (firstButton) {
-            firstButton.click();
+
+        // Show slides matching this tab
+        slides.forEach(slide => {
+            const slideTab = slide.getAttribute('data-tab');
+            slide.classList.toggle('active', slideTab === tabName);
+        });
+
+        // Scroll to top
+        const mainContent = document.querySelector('.slide-main-content');
+        if (mainContent) {
+            mainContent.scrollTop = 0;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Update URL hash
+        if (!window.location.hash.includes(`tab-${tabName}`)) {
+            window.location.hash = `tab-${tabName}`;
         }
     }
+
+    // Check hash on load
+    function checkHashAndShowTab() {
+        if (window.location.hash) {
+            const match = window.location.hash.match(/tab-(\w+)/);
+            if (match && match[1]) {
+                showTab(match[1]);
+                return;
+            }
+        }
+        showTab('overview'); // Default
+    }
+
+    checkHashAndShowTab();
+    window.addEventListener('hashchange', checkHashAndShowTab);
+}
+
+// ============================================
+// DROPDOWN NAVIGATION HANDLERS
+// ============================================
+
+function initDropdownNavigation() {
+    const dropdownItems = document.querySelectorAll('.has-dropdown');
+
+    if (dropdownItems.length === 0) return;
+
+    dropdownItems.forEach(item => {
+        const trigger = item.querySelector('.dropdown-trigger');
+        const menu = item.querySelector('.dropdown-menu');
+
+        if (!trigger || !menu) return;
+
+        // Toggle on click (mobile)
+        trigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+
+                // Close other dropdowns
+                dropdownItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        const otherTrigger = otherItem.querySelector('.dropdown-trigger');
+                        if (otherTrigger) {
+                            otherTrigger.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+
+                // Toggle current dropdown
+                const isActive = item.classList.toggle('active');
+                trigger.setAttribute('aria-expanded', isActive);
+            }
+        });
+
+        // Desktop: Show on hover
+        if (window.innerWidth > 768) {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('active');
+                trigger.setAttribute('aria-expanded', 'true');
+            });
+
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    // Mark current page's dropdown
+    const currentPage = window.location.pathname.split('/').pop();
+    dropdownItems.forEach(item => {
+        const trigger = item.querySelector('.dropdown-trigger');
+        if (trigger && trigger.getAttribute('href') === currentPage) {
+            item.classList.add('current-page');
+        }
+    });
+
+    // Mark active tab in dropdown
+    if (window.location.hash) {
+        const activeLink = document.querySelector(`.dropdown-menu a[href="${currentPage}${window.location.hash}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-dropdown')) {
+            dropdownItems.forEach(item => {
+                item.classList.remove('active');
+                const trigger = item.querySelector('.dropdown-trigger');
+                if (trigger) {
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
 }
 
 // Tab switching for capstone requirements
@@ -351,7 +430,8 @@ function initCapstoneRequirements() {
 // Initialize tab navigation when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.slide-container')) {
-        initTabNavigation();
+        initTabNavigation();      // Updated function - supports dropdown links
+        initDropdownNavigation(); // New function - handles dropdown interactions
     }
 
     // Initialize capstone requirements tabs
