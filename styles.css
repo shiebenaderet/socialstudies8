@@ -1813,6 +1813,193 @@ a:focus-visible,
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
 
+/* Capstone-Specific Styles */
+
+/* Capstone Questions Cards */
+.capstone-questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.question-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-left: 8px solid;
+}
+
+.question-card.q1 {
+    border-left-color: #3b82f6;
+}
+
+.question-card.q2 {
+    border-left-color: #8b5cf6;
+}
+
+.question-card h3 {
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.question-card .big-question {
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #334155;
+}
+
+.question-card .hints {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.question-card .hints h4 {
+    font-size: 0.9em;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.question-card ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* Requirements Tabs */
+.requirement-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.requirement-tab {
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: #64748b;
+    transition: all 0.3s;
+}
+
+.requirement-tab:hover {
+    color: #3b82f6;
+}
+
+.requirement-tab.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
+}
+
+.requirement-panel {
+    display: none;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.requirement-panel.active {
+    display: block;
+}
+
+.requirement-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.requirement-panel li {
+    padding: 12px;
+    margin: 8px 0;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #3b82f6;
+}
+
+/* Capstone Connection Banner */
+.capstone-banner {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 5px solid #f59e0b;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+}
+
+.capstone-banner h2 {
+    color: #92400e;
+    margin-bottom: 15px;
+}
+
+/* Tips Grid */
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.tip-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 5px solid;
+}
+
+.tip-box.q1 {
+    border-left-color: #3b82f6;
+}
+
+.tip-box.q2 {
+    border-left-color: #8b5cf6;
+}
+
+.tip-box h4 {
+    margin-bottom: 15px;
+}
+
+.tip-box .key-idea {
+    background: #fef3c7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #92400e;
+}
+
+/* Mobile Responsive for Capstone */
+@media (max-width: 768px) {
+    .capstone-questions {
+        grid-template-columns: 1fr;
+    }
+
+    .requirement-tabs {
+        flex-direction: column;
+    }
+
+    .requirement-tab {
+        text-align: left;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+
+    .requirement-tab.active {
+        border-left-color: #3b82f6;
+        border-bottom-color: transparent;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Print Optimization */
 @media print {
     @page {
