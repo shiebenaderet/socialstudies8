@@ -369,6 +369,29 @@ class SlideNavigator {
     }
 }
 
+// Tab switching for capstone requirements
+function initCapstoneRequirements() {
+    const tabButtons = document.querySelectorAll('.requirement-tab');
+    const tabPanels = document.querySelectorAll('.requirement-panel');
+
+    if (tabButtons.length === 0) return;
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active from all
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+
+            // Add active to clicked
+            button.classList.add('active');
+            const targetPanel = document.getElementById(button.dataset.tab);
+            if (targetPanel) {
+                targetPanel.classList.add('active');
+            }
+        });
+    });
+}
+
 // Initialize slide navigator when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.slide-container')) {
@@ -382,4 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
+
+    // Initialize capstone requirements tabs
+    initCapstoneRequirements();
 });
