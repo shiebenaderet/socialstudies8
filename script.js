@@ -337,7 +337,22 @@ function initDropdownNavigation() {
 
         if (!trigger || !menu) return;
 
-        // Toggle on click (mobile)
+        // Desktop: hover shows dropdown
+        item.addEventListener('mouseenter', () => {
+            // Hide all other dropdowns first
+            dropdownItems.forEach(other => {
+                if (other !== item) {
+                    other.classList.remove('active');
+                }
+            });
+            item.classList.add('active');
+        });
+
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('active');
+        });
+
+        // Mobile: click toggles dropdown (preventDefault on mobile only)
         trigger.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
@@ -346,31 +361,13 @@ function initDropdownNavigation() {
                 dropdownItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
-                        const otherTrigger = otherItem.querySelector('.dropdown-trigger');
-                        if (otherTrigger) {
-                            otherTrigger.setAttribute('aria-expanded', 'false');
-                        }
                     }
                 });
 
                 // Toggle current dropdown
-                const isActive = item.classList.toggle('active');
-                trigger.setAttribute('aria-expanded', isActive);
+                item.classList.toggle('active');
             }
         });
-
-        // Desktop: Show on hover
-        if (window.innerWidth > 768) {
-            item.addEventListener('mouseenter', () => {
-                item.classList.add('active');
-                trigger.setAttribute('aria-expanded', 'true');
-            });
-
-            item.addEventListener('mouseleave', () => {
-                item.classList.remove('active');
-                trigger.setAttribute('aria-expanded', 'false');
-            });
-        }
     });
 
     // Mark current page's dropdown
@@ -390,15 +387,11 @@ function initDropdownNavigation() {
         }
     }
 
-    // Close dropdowns when clicking outside
+    // Close all dropdowns when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.has-dropdown')) {
             dropdownItems.forEach(item => {
                 item.classList.remove('active');
-                const trigger = item.querySelector('.dropdown-trigger');
-                if (trigger) {
-                    trigger.setAttribute('aria-expanded', 'false');
-                }
             });
         }
     });
@@ -429,9 +422,12 @@ function initCapstoneRequirements() {
 
 // Initialize tab navigation when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Always initialize dropdown navigation (on all pages)
+    initDropdownNavigation(); // New function - handles dropdown interactions
+
+    // Only initialize tab navigation on unit pages
     if (document.querySelector('.slide-container')) {
         initTabNavigation();      // Updated function - supports dropdown links
-        initDropdownNavigation(); // New function - handles dropdown interactions
     }
 
     // Initialize capstone requirements tabs
