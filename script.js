@@ -266,105 +266,61 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============================================
-// SLIDE NAVIGATION SYSTEM - Sidebar Based
+// TAB-BASED NAVIGATION SYSTEM - 4 Tabs per Unit
 // ============================================
 
-class SlideNavigator {
-    constructor() {
-        this.currentSlide = 1;
-        this.totalSlides = 0;
-        this.slides = [];
-        this.navItems = [];
-        this.init();
-    }
+function initTabNavigation() {
+    const tabButtons = document.querySelectorAll('.slide-nav-item');
+    const slides = document.querySelectorAll('.slide');
 
-    init() {
-        const slideContainer = document.querySelector('.slide-container');
-        if (!slideContainer) return;
+    if (tabButtons.length === 0 || slides.length === 0) return;
 
-        this.slides = Array.from(document.querySelectorAll('.slide'));
-        this.navItems = Array.from(document.querySelectorAll('.slide-nav-item'));
-        this.totalSlides = this.slides.length;
+    tabButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
 
-        if (this.totalSlides === 0) return;
+            // Get target tab from data-slide attribute
+            const targetTab = button.getAttribute('data-slide');
 
-        this.showSlide(1);
-        this.setupEventListeners();
-    }
+            // Update active tab button
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
 
-    setupEventListeners() {
-        // Sidebar navigation clicks
-        this.navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                const slideNum = parseInt(item.getAttribute('data-slide'));
-                this.showSlide(slideNum);
+            // Show all slides that belong to this tab
+            slides.forEach(slide => {
+                const slideTab = slide.getAttribute('data-tab');
+                if (slideTab === targetTab) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
             });
+
+            // Scroll to top of content area
+            const mainContent = document.querySelector('.slide-main-content');
+            if (mainContent) {
+                mainContent.scrollTop = 0;
+            }
+
+            // Update URL hash for bookmarking
+            window.location.hash = `tab-${targetTab}`;
         });
+    });
 
-        // Keyboard navigation (Arrow keys)
-        document.addEventListener('keydown', (e) => this.handleKeyboard(e));
-    }
-
-    showSlide(n) {
-        if (n < 1) n = 1;
-        if (n > this.totalSlides) n = this.totalSlides;
-
-        this.currentSlide = n;
-
-        // Update slide visibility
-        this.slides.forEach((slide, index) => {
-            slide.classList.toggle('active', index + 1 === n);
-        });
-
-        // Update sidebar nav active state
-        this.navItems.forEach((item, index) => {
-            item.classList.toggle('active', index + 1 === n);
-        });
-
-        // Scroll to top of content
-        const mainContent = document.querySelector('.slide-main-content');
-        if (mainContent) mainContent.scrollTop = 0;
-
-        // Update URL hash for bookmarking
-        window.location.hash = `slide-${n}`;
-    }
-
-    nextSlide() {
-        if (this.currentSlide < this.totalSlides) {
-            this.showSlide(this.currentSlide + 1);
+    // Check for hash in URL and show corresponding tab
+    if (window.location.hash) {
+        const match = window.location.hash.match(/tab-(\w+)/);
+        if (match && match[1]) {
+            const targetButton = document.querySelector(`.slide-nav-item[data-slide="${match[1]}"]`);
+            if (targetButton) {
+                targetButton.click();
+            }
         }
-    }
-
-    previousSlide() {
-        if (this.currentSlide > 1) {
-            this.showSlide(this.currentSlide - 1);
-        }
-    }
-
-    handleKeyboard(e) {
-        // Only handle keyboard if we're on a slide page
-        if (!document.querySelector('.slide-container')) return;
-
-        switch(e.key) {
-            case 'ArrowLeft':
-            case 'ArrowUp':
-                e.preventDefault();
-                this.previousSlide();
-                break;
-            case 'ArrowRight':
-            case 'ArrowDown':
-                e.preventDefault();
-                this.nextSlide();
-                break;
-            case 'Home':
-                e.preventDefault();
-                this.showSlide(1);
-                break;
-            case 'End':
-                e.preventDefault();
-                this.showSlide(this.totalSlides);
-                break;
+    } else {
+        // Default: show first tab (overview)
+        const firstButton = tabButtons[0];
+        if (firstButton) {
+            firstButton.click();
         }
     }
 }
@@ -392,18 +348,10 @@ function initCapstoneRequirements() {
     });
 }
 
-// Initialize slide navigator when DOM is ready
+// Initialize tab navigation when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.slide-container')) {
-        window.slideNavigator = new SlideNavigator();
-
-        // Check for hash in URL (e.g., #slide-3)
-        if (window.location.hash) {
-            const match = window.location.hash.match(/slide-(\d+)/);
-            if (match && match[1]) {
-                window.slideNavigator.showSlide(parseInt(match[1]));
-            }
-        }
+        initTabNavigation();
     }
 
     // Initialize capstone requirements tabs
