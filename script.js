@@ -315,6 +315,19 @@ function initTabNavigation() {
         }
     }
 
+    // Add click handlers to header tabs
+    const headerTabs = document.querySelectorAll('.header-tab');
+    headerTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = tab.getAttribute('href');
+            const match = href.match(/tab-(\w+)/);
+            if (match && match[1]) {
+                showTab(match[1]);
+            }
+        });
+    });
+
     // Check hash on load
     function checkHashAndShowTab() {
         if (window.location.hash) {
@@ -346,18 +359,25 @@ function initDropdownNavigation() {
 
         if (!trigger || !menu) return;
 
-        // Desktop: hover shows dropdown
+        let hoverTimeout;
+
+        // Desktop: hover shows dropdown with delay
         item.addEventListener('mouseenter', () => {
-            // Hide all other dropdowns first
-            dropdownItems.forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('active');
-                }
-            });
-            item.classList.add('active');
+            // Add small delay to prevent accidental triggers
+            hoverTimeout = setTimeout(() => {
+                // Hide all other dropdowns first
+                dropdownItems.forEach(other => {
+                    if (other !== item) {
+                        other.classList.remove('active');
+                    }
+                });
+                item.classList.add('active');
+            }, 200); // 200ms delay
         });
 
         item.addEventListener('mouseleave', () => {
+            // Clear timeout if mouse leaves before dropdown shows
+            clearTimeout(hoverTimeout);
             item.classList.remove('active');
         });
 
