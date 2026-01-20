@@ -1704,6 +1704,199 @@ body:has(script[src*="script.js"]) .hero-image {
     display: none;
 }
 
+/* ============================================
+   CALLOUT BOXES FOR PRIMARY SOURCES & QUOTES
+   ============================================ */
+
+/* Primary Source Box - Founding Documents */
+.primary-source {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left: 5px solid #3b82f6;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+.primary-source::before {
+    content: "📜 PRIMARY SOURCE";
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #1e40af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.primary-source blockquote {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #1e3a8a;
+    margin: 15px 0;
+    padding-left: 15px;
+    border-left: 3px solid #60a5fa;
+}
+
+.primary-source .source-citation {
+    font-size: 0.9rem;
+    color: #475569;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* Voice Box - Quotes from Excluded Groups */
+.voice-box {
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    border-left: 5px solid #8b5cf6;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.1);
+}
+
+.voice-box::before {
+    content: "💬 VOICE FROM HISTORY";
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #6b21a8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.voice-box blockquote {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #581c87;
+    margin: 15px 0;
+    padding-left: 15px;
+    border-left: 3px solid #a78bfa;
+}
+
+.voice-box .speaker {
+    font-weight: 700;
+    color: #6b21a8;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+/* Paradox Box - Highlighting Contradictions */
+.paradox-box {
+    background: linear-gradient(135deg, #fef3c7 0%, #fecaca 100%);
+    border-left: 5px solid #dc2626;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.paradox-box::before {
+    content: "⚠️ THE AMERICAN PARADOX";
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #991b1b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.paradox-box p {
+    color: #7f1d1d;
+    line-height: 1.6;
+}
+
+/* Action Box - How Excluded Groups Fought */
+.action-box {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-left: 5px solid #059669;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.1);
+}
+
+.action-box::before {
+    content: "✊ HOW THEY FOUGHT";
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #065f46;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.action-box .event-title {
+    font-weight: 700;
+    color: #047857;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+/* Historical Context Box - Background Information */
+.context-box {
+    background: linear-gradient(135deg, #fef3e2 0%, #fed7aa 100%);
+    border-left: 5px solid #d97706;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.1);
+}
+
+.context-box::before {
+    content: "🔍 HISTORICAL CONTEXT";
+    display: block;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #92400e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+/* Why It Matters - Connection to Capstone */
+.why-matters {
+    background: #f0fdf4;
+    border-left: 4px solid #22c55e;
+    padding: 15px;
+    margin: 15px 0;
+    font-weight: 500;
+    color: #166534;
+}
+
+.why-matters::before {
+    content: "💡 WHY IT MATTERS: ";
+    font-weight: 700;
+    color: #15803d;
+}
+
+/* Key Takeaway Box */
+.key-takeaway {
+    background: #fef9c3;
+    border: 2px solid #eab308;
+    padding: 18px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #713f12;
+}
+
+.key-takeaway::before {
+    content: "🔑 KEY TAKEAWAY: ";
+    font-weight: 700;
+    color: #854d0e;
+}
+
 .slide-progress-text {
     padding: 8px 20px;
     font-size: 0.9rem;
