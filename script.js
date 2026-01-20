@@ -270,8 +270,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 
 function initTabNavigation() {
-    // Select both old sidebar nav items (if any exist) and new dropdown menu links
-    const tabButtons = document.querySelectorAll('.slide-nav-item, .dropdown-menu a');
+    // Select header tab buttons
+    const tabButtons = document.querySelectorAll('.header-tab');
     const slides = document.querySelectorAll('.slide');
 
     if (slides.length === 0) return;
@@ -280,15 +280,7 @@ function initTabNavigation() {
         // Update active states for all tab buttons
         tabButtons.forEach(btn => btn.classList.remove('active'));
 
-        // Mark active in dropdown menu
-        const dropdownActiveButton = document.querySelector(
-            `.dropdown-menu a[href$="#tab-${tabName}"]`
-        );
-        if (dropdownActiveButton) {
-            dropdownActiveButton.classList.add('active');
-        }
-
-        // Mark active in header tabs
+        // Mark active tab in header
         const headerActiveButton = document.querySelector(
             `.header-tab[href$="#tab-${tabName}"]`
         );
@@ -316,8 +308,7 @@ function initTabNavigation() {
     }
 
     // Add click handlers to header tabs
-    const headerTabs = document.querySelectorAll('.header-tab');
-    headerTabs.forEach(tab => {
+    tabButtons.forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
             const href = tab.getAttribute('href');
@@ -342,88 +333,6 @@ function initTabNavigation() {
 
     checkHashAndShowTab();
     window.addEventListener('hashchange', checkHashAndShowTab);
-}
-
-// ============================================
-// DROPDOWN NAVIGATION HANDLERS
-// ============================================
-
-function initDropdownNavigation() {
-    const dropdownItems = document.querySelectorAll('.has-dropdown');
-
-    if (dropdownItems.length === 0) return;
-
-    dropdownItems.forEach(item => {
-        const trigger = item.querySelector('.dropdown-trigger');
-        const menu = item.querySelector('.dropdown-menu');
-
-        if (!trigger || !menu) return;
-
-        let hoverTimeout;
-
-        // Desktop: hover shows dropdown with delay
-        item.addEventListener('mouseenter', () => {
-            // Add small delay to prevent accidental triggers
-            hoverTimeout = setTimeout(() => {
-                // Hide all other dropdowns first
-                dropdownItems.forEach(other => {
-                    if (other !== item) {
-                        other.classList.remove('active');
-                    }
-                });
-                item.classList.add('active');
-            }, 200); // 200ms delay
-        });
-
-        item.addEventListener('mouseleave', () => {
-            // Clear timeout if mouse leaves before dropdown shows
-            clearTimeout(hoverTimeout);
-            item.classList.remove('active');
-        });
-
-        // Mobile: click toggles dropdown (preventDefault on mobile only)
-        trigger.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-
-                // Close other dropdowns
-                dropdownItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-
-                // Toggle current dropdown
-                item.classList.toggle('active');
-            }
-        });
-    });
-
-    // Mark current page's dropdown
-    const currentPage = window.location.pathname.split('/').pop();
-    dropdownItems.forEach(item => {
-        const trigger = item.querySelector('.dropdown-trigger');
-        if (trigger && trigger.getAttribute('href') === currentPage) {
-            item.classList.add('current-page');
-        }
-    });
-
-    // Mark active tab in dropdown
-    if (window.location.hash) {
-        const activeLink = document.querySelector(`.dropdown-menu a[href="${currentPage}${window.location.hash}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-    }
-
-    // Close all dropdowns when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.has-dropdown')) {
-            dropdownItems.forEach(item => {
-                item.classList.remove('active');
-            });
-        }
-    });
 }
 
 // Tab switching for capstone requirements
@@ -451,12 +360,9 @@ function initCapstoneRequirements() {
 
 // Initialize tab navigation when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Always initialize dropdown navigation (on all pages)
-    initDropdownNavigation(); // New function - handles dropdown interactions
-
     // Only initialize tab navigation on unit pages
     if (document.querySelector('.slide-container')) {
-        initTabNavigation();      // Updated function - supports dropdown links
+        initTabNavigation();
     }
 
     // Initialize capstone requirements tabs
