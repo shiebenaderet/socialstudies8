@@ -288,6 +288,11 @@
             .design-section h2 {
                 font-size: 1.5rem;
             }
+
+            /* Make template structure grids stack on mobile */
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -346,18 +351,44 @@
             <h2>📋 Poster Design Ideas</h2>
             <p class="subtitle">Create a powerful one-page visual argument</p>
 
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Template Structure for Posters</h3>
+            <div style="background: #f8fafc; border-left: 5px solid #3b82f6; padding: 25px; margin-bottom: 30px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #1e3a8a; margin-bottom: 15px; font-size: 1.1rem;">Your poster should include:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                        <h4 style="color: #3b82f6; margin-bottom: 12px;">📝 Question 1 Section</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 1.8;">
+                            <li>✓ 4 Revolutionary Ideas</li>
+                            <li>✓ Image for each idea</li>
+                            <li>✓ Explanation for each</li>
+                            <li>✓ Why they were revolutionary</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                        <h4 style="color: #8b5cf6; margin-bottom: 12px;">⚖️ Question 2 Section</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 1.8;">
+                            <li>✓ Who had access in 1787</li>
+                            <li>✓ Who was excluded (specific groups)</li>
+                            <li>✓ How they fought back</li>
+                            <li>✓ How inclusion expanded</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Layout Ideas</h3>
             <div class="layout-examples">
                 <div class="layout-card">
-                    <h4>🎯 Classic Layout</h4>
+                    <h4>🎯 Two-Section Layout</h4>
                     <div class="visual">
                         <div class="layout-icon">📰</div>
-                        <div>Header → Quote → Evidence Boxes → Conclusion</div>
+                        <div>Top Half: Q1 (4 Ideas) | Bottom Half: Q2 (Access & Exclusion)</div>
                     </div>
                     <ul>
-                        <li>Bold title at top</li>
-                        <li>Central quote or thesis</li>
-                        <li>3-4 evidence boxes below</li>
-                        <li>Strong conclusion statement</li>
+                        <li>Title banner across top</li>
+                        <li>Upper section: 4 idea boxes with images</li>
+                        <li>Lower section: Access/exclusion analysis</li>
+                        <li>Clear visual separation between sections</li>
                     </ul>
                 </div>
 
@@ -365,27 +396,27 @@
                     <h4>⚖️ Split Design</h4>
                     <div class="visual">
                         <div class="layout-icon">↔️</div>
-                        <div>Left: Ideals | Right: Reality</div>
+                        <div>Left: Q1 (Ideals) | Right: Q2 (Reality)</div>
                     </div>
                     <ul>
-                        <li>Divide poster vertically</li>
-                        <li>Left: Revolutionary ideals</li>
-                        <li>Right: Who was excluded</li>
+                        <li>Divide poster vertically in half</li>
+                        <li>Left: 4 revolutionary ideals with images</li>
+                        <li>Right: Who was excluded + their struggle</li>
                         <li>Perfect for showing contrast</li>
                     </ul>
                 </div>
 
                 <div class="layout-card">
-                    <h4>📊 Timeline Style</h4>
+                    <h4>🗂️ Grid Layout</h4>
                     <div class="visual">
-                        <div class="layout-icon">📅</div>
-                        <div>Timeline from Colonial → Constitution</div>
+                        <div class="layout-icon">▦</div>
+                        <div>2x2 Grid of Ideas + Bottom Section for Q2</div>
                     </div>
                     <ul>
-                        <li>Horizontal timeline across poster</li>
-                        <li>Key events and quotes above</li>
-                        <li>Analysis and evidence below</li>
-                        <li>Shows progression over time</li>
+                        <li>Top: 2x2 grid for 4 revolutionary ideas</li>
+                        <li>Each grid cell: Image + short explanation</li>
+                        <li>Bottom: Wide section for Question 2</li>
+                        <li>Clean, organized appearance</li>
                     </ul>
                 </div>
             </div>
@@ -412,6 +443,42 @@
             <h2>🖥️ Slideshow Design Ideas</h2>
             <p class="subtitle">Create an engaging multi-slide presentation</p>
 
+            <!-- Template Download Section -->
+            <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border: 3px solid #3b82f6; border-radius: 12px; padding: 30px; margin-bottom: 40px; text-align: center;">
+                <h3 style="color: #1e3a8a; font-size: 1.6rem; margin-bottom: 15px;">📥 Start with Our Template!</h3>
+                <p style="color: #1e40af; font-size: 1.1rem; margin-bottom: 20px;">Use this pre-made Google Slides template to get started. It includes all the structure you need!</p>
+                <a href="https://docs.google.com/presentation/d/1zXhd9McX_1_yJdP5WIVQowrSmmI_ZHmeh9lWdiTowII/copy" target="_blank" class="btn" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); font-size: 1.2rem; padding: 18px 40px; display: inline-block;">
+                    Make a Copy of Template →
+                </a>
+                <p style="color: #475569; font-size: 0.9rem; margin-top: 15px; font-style: italic;">This will create your own copy that you can edit</p>
+            </div>
+
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Template Structure</h3>
+            <div style="background: #f8fafc; border-left: 5px solid #3b82f6; padding: 25px; margin-bottom: 30px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #1e3a8a; margin-bottom: 15px; font-size: 1.1rem;">The template follows this structure:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                        <h4 style="color: #3b82f6; margin-bottom: 12px;">📝 Question 1: Revolutionary Ideals</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 1.8;">
+                            <li>✓ IDEA 1: Image + Explanation</li>
+                            <li>✓ IDEA 2: Image + Explanation</li>
+                            <li>✓ IDEA 3: Image + Explanation</li>
+                            <li>✓ IDEA 4: Image + Explanation</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0;">
+                        <h4 style="color: #8b5cf6; margin-bottom: 12px;">⚖️ Question 2: Access & Exclusion</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 1.8;">
+                            <li>✓ Who had access in 1787?</li>
+                            <li>✓ Who was excluded?</li>
+                            <li>✓ How they fought for rights</li>
+                            <li>✓ How inclusion expanded</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Layout Variations</h3>
             <div class="layout-examples">
                 <div class="layout-card">
                     <h4>📑 Standard Structure</h4>
@@ -479,32 +546,45 @@
             <h2>🌐 Google Site Design Ideas</h2>
             <p class="subtitle">Build a multi-page website to showcase your research</p>
 
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Template Structure for Websites</h3>
+            <div style="background: #f8fafc; border-left: 5px solid #3b82f6; padding: 25px; margin-bottom: 30px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #1e3a8a; margin-bottom: 15px; font-size: 1.1rem;">Organize your content across multiple pages:</p>
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; margin-top: 15px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 2;">
+                        <li>📄 <strong>Page 1 - Question 1:</strong> 4 Revolutionary Ideas (each with image + explanation)</li>
+                        <li>📄 <strong>Page 2 - Question 2:</strong> Access in 1787, exclusion, struggle, and expansion</li>
+                        <li>📄 <strong>Optional:</strong> Sources page, reflection page, or home page intro</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Page Layout Ideas</h3>
             <div class="layout-examples">
                 <div class="layout-card">
-                    <h4>🏠 Multi-Page Structure</h4>
+                    <h4>🏠 Simple Two-Page Structure</h4>
                     <div class="visual">
                         <div class="layout-icon">📄</div>
-                        <div>Home → Q1 → Q2 → Sources</div>
+                        <div>Page 1: Q1 (4 Ideas) | Page 2: Q2 (Access & Exclusion)</div>
                     </div>
                     <ul>
-                        <li>Home: Introduction & thesis</li>
-                        <li>Page 2: Answer to Question 1</li>
-                        <li>Page 3: Answer to Question 2</li>
-                        <li>Page 4: Sources & reflection</li>
+                        <li>Page 1: 4 ideas, each in its own section</li>
+                        <li>Page 2: Who had access + who didn't</li>
+                        <li>Clean navigation between pages</li>
+                        <li>Easy to organize and navigate</li>
                     </ul>
                 </div>
 
                 <div class="layout-card">
-                    <h4>📚 Unit-Based Pages</h4>
+                    <h4>📚 Idea-Based Pages</h4>
                     <div class="visual">
                         <div class="layout-icon">1️⃣→4️⃣</div>
-                        <div>One page per unit</div>
+                        <div>One page per revolutionary idea</div>
                     </div>
                     <ul>
-                        <li>Home page with overview</li>
-                        <li>Unit 1, 2, 3, 4 pages</li>
-                        <li>Each shows unit's ideals + evidence</li>
-                        <li>Conclusion page ties it together</li>
+                        <li>Home: Overview & introduction</li>
+                        <li>Pages 2-5: One idea per page</li>
+                        <li>Page 6: Question 2 analysis</li>
+                        <li>Deep dive into each ideal</li>
                     </ul>
                 </div>
 
@@ -546,18 +626,32 @@
             <h2>🎬 WeVideo Design Ideas</h2>
             <p class="subtitle">Create a compelling video presentation</p>
 
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Template Structure for Videos</h3>
+            <div style="background: #f8fafc; border-left: 5px solid #3b82f6; padding: 25px; margin-bottom: 30px; border-radius: 8px;">
+                <p style="font-weight: 600; color: #1e3a8a; margin-bottom: 15px; font-size: 1.1rem;">Your video should flow like this (3-5 minutes):</p>
+                <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e2e8f0; margin-top: 15px;">
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #475569; line-height: 2;">
+                        <li>🎬 <strong>Intro (30 sec):</strong> Title card + your thesis</li>
+                        <li>📝 <strong>Question 1 (90 sec):</strong> Present 4 revolutionary ideas with images</li>
+                        <li>⚖️ <strong>Question 2 (90 sec):</strong> Who had access, who didn't, and the struggle</li>
+                        <li>🎯 <strong>Conclusion (30 sec):</strong> Why this matters + closing thought</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="color: #1e3a8a; margin-bottom: 20px; font-size: 1.4rem;">Video Style Ideas</h3>
             <div class="layout-examples">
                 <div class="layout-card">
                     <h4>🎥 Documentary Style</h4>
                     <div class="visual">
                         <div class="layout-icon">🎞️</div>
-                        <div>Narration + Images + Text</div>
+                        <div>Narration + Images + Text Overlays</div>
                     </div>
                     <ul>
-                        <li>Record voiceover narration</li>
-                        <li>Show historical images</li>
-                        <li>Add text overlays for quotes</li>
-                        <li>Background music (low volume)</li>
+                        <li>Record voiceover explaining each idea</li>
+                        <li>Show historical images while narrating</li>
+                        <li>Text overlays for key quotes</li>
+                        <li>Transition between 4 ideas smoothly</li>
                     </ul>
                 </div>
 
@@ -565,27 +659,27 @@
                     <h4>🗣️ Talking Head + Visuals</h4>
                     <div class="visual">
                         <div class="layout-icon">👤</div>
-                        <div>You on camera explaining</div>
+                        <div>You presenting + cutting to evidence</div>
                     </div>
                     <ul>
-                        <li>Film yourself presenting</li>
-                        <li>Cut to images/documents</li>
-                        <li>Show evidence while you discuss</li>
-                        <li>More personal connection</li>
+                        <li>Film yourself explaining each idea</li>
+                        <li>Cut to images of primary sources</li>
+                        <li>Show documents as you reference them</li>
+                        <li>More personal and engaging</li>
                     </ul>
                 </div>
 
                 <div class="layout-card">
-                    <h4>📺 News Report Format</h4>
+                    <h4>📺 Slideshow Narration</h4>
                     <div class="visual">
-                        <div class="layout-icon">📰</div>
-                        <div>"Breaking News" style</div>
+                        <div class="layout-icon">🖼️</div>
+                        <div>Slide-based with voiceover</div>
                     </div>
                     <ul>
-                        <li>Act as news anchor/reporter</li>
-                        <li>"Reporting" from historical events</li>
-                        <li>Interview format (questions → answers)</li>
-                        <li>Creative and engaging</li>
+                        <li>Create slides for each of 4 ideas</li>
+                        <li>Screen record slides with narration</li>
+                        <li>Similar to slideshow but as video</li>
+                        <li>Easiest to organize and edit</li>
                     </ul>
                 </div>
             </div>
