@@ -2746,3 +2746,224 @@ body[data-unit="4"] .assignment-highlight {
         page-break-inside: avoid;
     }
 }
+
+/* ============================================
+   AMERICAN IDEALS SLIDES STYLING
+   ============================================ */
+
+/* American Ideals Slide - Base Styling */
+.american-ideals-slide {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Unit-Specific Background Colors */
+body[data-unit="1"] .american-ideals-slide {
+    background: linear-gradient(135deg, #EBF5FF 0%, #D1E9FF 100%);
+    border-left: 8px solid #4A90E2;
+}
+
+body[data-unit="2"] .american-ideals-slide {
+    background: linear-gradient(135deg, #FFE8E8 0%, #FFD1D1 100%);
+    border-left: 8px solid #D64545;
+}
+
+body[data-unit="3"] .american-ideals-slide {
+    background: linear-gradient(135deg, #E8F8E8 0%, #D1F0D1 100%);
+    border-left: 8px solid #52A55A;
+}
+
+body[data-unit="4"] .american-ideals-slide {
+    background: linear-gradient(135deg, #F3E8FF 0%, #E5D1FF 100%);
+    border-left: 8px solid #8B5FBF;
+}
+
+/* American Ideals Subtitle */
+.american-ideals-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 25px;
+    text-align: center;
+    font-style: italic;
+}
+
+/* American Ideals Content Container */
+.american-ideals-content {
+    padding: 20px;
+}
+
+/* Individual Ideal Item */
+.ideal-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.ideal-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Checkbox Styling */
+.ideal-checkbox {
+    font-size: 1.8rem;
+    line-height: 1;
+    color: #64748b;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+/* Ideal Text */
+.ideal-text {
+    flex: 1;
+    line-height: 1.6;
+}
+
+.ideal-text strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.ideal-text em {
+    display: block;
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Key Idea Box */
+.key-idea-box {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-left: 5px solid #F59E0B;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25px 0;
+}
+
+.key-idea-box p {
+    color: #78350f;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.key-idea-box p:last-child {
+    margin-bottom: 0;
+}
+
+.key-idea-box ul {
+    margin-left: 25px;
+    margin-top: 10px;
+    color: #78350f;
+}
+
+/* Capstone Callout */
+.capstone-callout {
+    background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+    border-left: 5px solid #3B82F6;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 25px 0;
+}
+
+.capstone-callout p {
+    color: #1e3a8a;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Unit-Specific Ideal Item Hover Colors */
+body[data-unit="1"] .ideal-item:hover {
+    border-left: 4px solid #4A90E2;
+}
+
+body[data-unit="2"] .ideal-item:hover {
+    border-left: 4px solid #D64545;
+}
+
+body[data-unit="3"] .ideal-item:hover {
+    border-left: 4px solid #52A55A;
+}
+
+body[data-unit="4"] .ideal-item:hover {
+    border-left: 4px solid #8B5FBF;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    .american-ideals-slide {
+        border-left-width: 5px;
+    }
+
+    .american-ideals-subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .american-ideals-content {
+        padding: 15px;
+    }
+
+    .ideal-item {
+        gap: 12px;
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+
+    .ideal-checkbox {
+        font-size: 1.5rem;
+    }
+
+    .ideal-text strong {
+        font-size: 1rem;
+    }
+
+    .ideal-text em {
+        font-size: 0.85rem;
+    }
+
+    .key-idea-box,
+    .capstone-callout {
+        padding: 15px;
+        margin: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .american-ideals-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .american-ideals-content {
+        padding: 10px;
+    }
+
+    .ideal-item {
+        gap: 10px;
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .ideal-checkbox {
+        font-size: 1.3rem;
+    }
+
+    .ideal-text strong {
+        font-size: 0.95rem;
+    }
+
+    .ideal-text em {
+        font-size: 0.8rem;
+    }
+}
