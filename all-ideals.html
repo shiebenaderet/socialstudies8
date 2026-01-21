@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All American Ideals - Social Studies 8</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page-specific styles */
+        .all-ideals-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 2x2 Grid Layout */
+        .ideals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .unit-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Unit-specific colors */
+        .unit-card.unit1 {
+            border-left: 8px solid #4A90E2;
+            background: linear-gradient(135deg, #EBF5FF 0%, #F8FBFF 100%);
+        }
+
+        .unit-card.unit2 {
+            border-left: 8px solid #D64545;
+            background: linear-gradient(135deg, #FFE8E8 0%, #FFF8F8 100%);
+        }
+
+        .unit-card.unit3 {
+            border-left: 8px solid #52A55A;
+            background: linear-gradient(135deg, #E8F8E8 0%, #F8FFF8 100%);
+        }
+
+        .unit-card.unit4 {
+            border-left: 8px solid #8B5FBF;
+            background: linear-gradient(135deg, #F3E8FF 0%, #FBF8FF 100%);
+        }
+
+        .unit-card-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .unit-number {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .unit1 .unit-number { color: #4A90E2; }
+        .unit2 .unit-number { color: #D64545; }
+        .unit3 .unit-number { color: #52A55A; }
+        .unit4 .unit-number { color: #8B5FBF; }
+
+        .unit-card-header h2 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .unit-subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Ideal items - condensed version */
+        .ideal-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ideal-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .ideal-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #64748b;
+        }
+
+        .ideal-list strong {
+            font-size: 1rem;
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .ideal-list .ideal-description {
+            font-size: 0.9rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .ideal-list .ideal-example {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        /* Back button */
+        .back-button {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+            max-width: 250px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+            background: #2563eb;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .ideals-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .page-header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .unit-card {
+                padding: 20px;
+            }
+
+            .unit-card-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-brand">Social Studies 8</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="unit1.html">Unit 1</a></li>
+                <li><a href="unit2.html">Unit 2</a></li>
+                <li><a href="unit3.html">Unit 3</a></li>
+                <li><a href="unit4.html">Unit 4</a></li>
+                <li><a href="capstone.html">Capstone</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="all-ideals-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>All American Ideals</h1>
+            <p>Revolutionary ideas that shaped America and inspired movements for freedom worldwide</p>
+        </div>
+
+        <!-- 2x2 Grid of Units -->
+        <div class="ideals-grid">
+            <!-- Unit 1: Colonial Foundations -->
+            <div class="unit-card unit1">
+                <div class="unit-card-header">
+                    <div class="unit-number">Unit 1</div>
+                    <h2>American Ideals from This Unit</h2>
+                    <p class="unit-subtitle">Colonial Foundations - Where American Self-Government Began</p>
+                </div>
+                <ul class="ideal-list">
+                    <li>
+                        <strong>Self-Government</strong>
+                        <div class="ideal-description">People make their own laws instead of being ruled by distant powers.</div>
+                        <div class="ideal-example">Examples: Mayflower Compact (1620), House of Burgesses (1619)</div>
+                    </li>
+                    <li>
+                        <strong>Representative Government</strong>
+                        <div class="ideal-description">Electing people to speak and vote for you.</div>
+                        <div class="ideal-example">Example: House of Burgesses in Virginia</div>
+                    </li>
+                    <li>
+                        <strong>Direct Democracy</strong>
+                        <div class="ideal-description">Citizens make decisions together.</div>
+                        <div class="ideal-example">Example: Town meetings in New England</div>
+                    </li>
+                    <li>
+                        <strong>Civil Body Politic</strong>
+                        <div class="ideal-description">Agreeing to form a government for the common good.</div>
+                        <div class="ideal-example">Example: Mayflower Compact</div>
+                    </li>
+                    <li>
+                        <strong>Sovereignty</strong>
+                        <div class="ideal-description">The right to make decisions without outside control.</div>
+                        <div class="ideal-example">Example: Colonists wanted freedom from British control</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Unit 2: The Contradiction -->
+            <div class="unit-card unit2">
+                <div class="unit-card-header">
+                    <div class="unit-number">Unit 2</div>
+                    <h2>American Ideals from This Unit</h2>
+                    <p class="unit-subtitle">The Contradiction at America's Heart</p>
+                </div>
+                <ul class="ideal-list">
+                    <li>
+                        <strong>The Paradox of Liberty</strong>
+                        <div class="ideal-description">America built wealth on slavery while claiming freedom.</div>
+                        <div class="ideal-example">This contradiction would drive future conflicts.</div>
+                    </li>
+                    <li>
+                        <strong>Human Dignity</strong>
+                        <div class="ideal-description">Every person has inherent worth.</div>
+                        <div class="ideal-example">Enslaved people were denied this basic recognition.</div>
+                    </li>
+                    <li>
+                        <strong>Economic Justice</strong>
+                        <div class="ideal-description">Wealth should not come from exploiting others.</div>
+                        <div class="ideal-example">The Triangle Trade violated this principle.</div>
+                    </li>
+                </ul>
+                <div style="margin-top: 20px; padding: 15px; background: #fee2e2; border-left: 4px solid #D64545; border-radius: 6px;">
+                    <p style="font-size: 0.9rem; color: #1a1a1a; margin: 0;"><strong>⚠️ The Big Contradiction:</strong> America's economy was built on enslaved labor, but its founding documents would promise "life, liberty, and the pursuit of happiness." Enslaved people and abolitionists would later USE these American ideals to argue against slavery.</p>
+                </div>
+            </div>
+
+            <!-- Unit 3: Revolutionary Ideas -->
+            <div class="unit-card unit3">
+                <div class="unit-card-header">
+                    <div class="unit-number">Unit 3</div>
+                    <h2>American Ideals from This Unit</h2>
+                    <p class="unit-subtitle">Revolutionary Ideas That Inspired the World</p>
+                </div>
+                <ul class="ideal-list">
+                    <li>
+                        <strong>"All Men Are Created Equal"</strong>
+                        <div class="ideal-description">Every person is born with the same basic worth.</div>
+                        <div class="ideal-example">From: Declaration of Independence (1776)</div>
+                    </li>
+                    <li>
+                        <strong>Natural/Unalienable Rights</strong>
+                        <div class="ideal-description">Life, liberty, pursuit of happiness—cannot be taken away.</div>
+                        <div class="ideal-example">From: Declaration of Independence</div>
+                    </li>
+                    <li>
+                        <strong>Consent of the Governed</strong>
+                        <div class="ideal-description">Government power comes from the people, not kings.</div>
+                        <div class="ideal-example">From: Declaration of Independence</div>
+                    </li>
+                    <li>
+                        <strong>"No Taxation Without Representation"</strong>
+                        <div class="ideal-description">No taxes without a voice in government.</div>
+                        <div class="ideal-example">Revolutionary slogan; colonists' rallying cry</div>
+                    </li>
+                    <li>
+                        <strong>"Remember the Ladies"</strong>
+                        <div class="ideal-description">Abigail Adams' demand for women's inclusion (1776).</div>
+                        <div class="ideal-example">Shows women were excluded despite contributing to Revolution.</div>
+                    </li>
+                    <li>
+                        <strong>Love of Freedom</strong>
+                        <div class="ideal-description">Phillis Wheatley: ALL people desire liberty.</div>
+                        <div class="ideal-example">Shows enslaved people believed in American ideals too.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Unit 4: Constitutional Framework -->
+            <div class="unit-card unit4">
+                <div class="unit-card-header">
+                    <div class="unit-number">Unit 4</div>
+                    <h2>American Ideals from This Unit</h2>
+                    <p class="unit-subtitle">Building a Government That Protects Freedom</p>
+                </div>
+                <ul class="ideal-list">
+                    <li>
+                        <strong>"We the People"</strong>
+                        <div class="ideal-description">Government belongs to the people, not rulers.</div>
+                        <div class="ideal-example">From: Constitution Preamble</div>
+                    </li>
+                    <li>
+                        <strong>Checks & Balances</strong>
+                        <div class="ideal-description">Each branch limits the others—prevents tyranny.</div>
+                        <div class="ideal-example">Revolutionary way to prevent abuse of power.</div>
+                    </li>
+                    <li>
+                        <strong>Separation of Powers</strong>
+                        <div class="ideal-description">Three branches: legislative, executive, judicial.</div>
+                        <div class="ideal-example">No single person or group has all power.</div>
+                    </li>
+                    <li>
+                        <strong>Bill of Rights</strong>
+                        <div class="ideal-description">First 10 Amendments protect freedoms FROM government.</div>
+                        <div class="ideal-example">Added because Anti-Federalists demanded protection of rights.</div>
+                    </li>
+                    <li>
+                        <strong>1st Amendment Freedoms</strong>
+                        <div class="ideal-description">Speech, religion, press, assembly.</div>
+                        <div class="ideal-example">Government CANNOT take these freedoms away.</div>
+                    </li>
+                    <li>
+                        <strong>Due Process</strong>
+                        <div class="ideal-description">Fair procedures before losing life, liberty, property.</div>
+                        <div class="ideal-example">5th and 14th Amendments.</div>
+                    </li>
+                    <li>
+                        <strong>Amendment Process</strong>
+                        <div class="ideal-description">The Constitution can change to expand rights.</div>
+                        <div class="ideal-example">THIS IS KEY: The framework allowed future expansion!</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" class="back-button">← Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
